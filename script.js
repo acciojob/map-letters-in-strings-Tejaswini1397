@@ -14,13 +14,14 @@
     letterMap[letter].push(i);
 	 
   }
-	 const resultString = JSON.stringify(letterMap)
-    .replace(/"/g, '') // remove double quotes around keys
-    .replace(/:/g, ': ') // add space after colon
+	  const resultString = '{' + Object.entries(letterMap)
+    .map(([key, value]) => `${key}: [${value.join(', ')}]`)
+    .join(', ') + '}';
 
-  return resultString
+  return resultString;
  }
-	 alert(mapLetters('dodo'));
+	  
+ alert(mapLetters("dodo"));
 
 	 
 	 
