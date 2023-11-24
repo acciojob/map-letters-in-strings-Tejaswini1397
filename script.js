@@ -4,24 +4,17 @@
 
   for (let i = 0; i < word.length; i++) {
     const letter = word[i];
-
-    // If the letter is not in the map, create an array for it
-    if (!letterMap.hasOwnProperty(letter)) {
-      letterMap[letter] = [];
+    if (letterMap.hasOwnProperty(letter)) {
+      letterMap[letter].push(i);
+    } else {
+      letterMap[letter] = [i];
     }
-
-    // Push the index to the array
-    letterMap[letter].push(i);
-	 
   }
-	  const resultString = '{' + Object.entries(letterMap)
-    .map(([key, value]) => `${key}: [${value.join(', ')}]`)
-    .join(', ') + '}';
 
-  return resultString;
+  return letterMap;
  }
 	  
- alert(mapLetters("dodo"));
+ console.log(mapLetters("dodo"));
 
 	 
 	 
